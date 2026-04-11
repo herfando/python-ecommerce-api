@@ -1,8 +1,9 @@
 import logging
 
-def setup_logging():
+def configure_logging():
     logging.basicConfig(
-        filename="app.log",
-        level=logging.DEBUG,
-        format="%(asctime)s - %(levelname)s - %(message)s"
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        filename="app.log",   # simpan ke file
+        filemode="a"
     )

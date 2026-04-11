@@ -122,9 +122,3 @@ Feel free to fork, improve, and contribute 🚀
 ---
 
 ## ⭐ Support
-
-If you find this project helpful, give it a ⭐ on GitHub.!
-
-<p align="center">
-  <img src="https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif" width="200"/>
-</p>
