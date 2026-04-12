@@ -115,10 +115,4 @@ This project aligns with backend requirements such as:
 
 ---
 
-## 🤝 Contribution
 
-Feel free to fork, improve, and contribute 🚀
-
----
-
-## ⭐ Support
