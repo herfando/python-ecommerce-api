@@ -104,15 +104,6 @@ This project is built to:
 
 ---
 
-## 💼 Career Context
 
-This project aligns with backend requirements such as:
-
-- RESTful API design
-- Database optimization
-- Authentication systems
-- Scalable backend architecture
-
----
 
 
