@@ -4,31 +4,59 @@ from api.users import router
 from core.logging_config import configure_logging
 import logging
 
-# ✅ TAMBAHAN
+# =========================
+# ENV CONFIG
+# =========================
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# =========================
+# CLOUDINARY SETUP
+# =========================
 import cloudinary
 import cloudinary.uploader
 
-# setup logging
+cloudinary.config(
+    cloud_name=os.getenv("CLOUD_NAME"),
+    api_key=os.getenv("API_KEY"),
+    api_secret=os.getenv("API_SECRET")
+)
+
+# =========================
+# AWS S3 SETUP
+# =========================
+import boto3
+import uuid
+
+s3_client = boto3.client(
+    "s3",
+    aws_access_key_id=os.getenv("AWS_ACCESS_KEY"),
+    aws_secret_access_key=os.getenv("AWS_SECRET_KEY"),
+    region_name=os.getenv("AWS_REGION")
+)
+
+BUCKET_NAME = os.getenv("AWS_BUCKET_NAME")
+
+# =========================
+# LOGGING
+# =========================
 configure_logging()
 logger = logging.getLogger(__name__)
 
-# ✅ CONFIG CLOUDINARY (ISI PUNYA LO)
-cloudinary.config(
-    cloud_name="ISI_CLOUD_NAME",
-    api_key="ISI_API_KEY",
-    api_secret="ISI_API_SECRET"
-)
-
-# lifespan handler (REPLACEMENT on_event)
+# =========================
+# LIFESPAN (START/STOP APP)
+# =========================
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # STARTUP
     logger.info("🚀 Backend is starting...")
     yield
-    # SHUTDOWN
     logger.info("🛑 Backend is shutting down...")
 
-# create app pakai lifespan
+# =========================
+# FASTAPI APP
+# =========================
 app = FastAPI(
     title="Python Backend",
     lifespan=lifespan
@@ -36,17 +64,19 @@ app = FastAPI(
 
 app.include_router(router)
 
+# =========================
+# ROOT ENDPOINT
+# =========================
 @app.get("/")
 def root():
-    logger.info("Root endpoint called")
     return {"message": "Backend running"}
 
-# =========================================
-# ✅ TAMBAHAN ENDPOINT UPLOAD
-# =========================================
-@app.post("/upload")
-async def upload(file: UploadFile = File(...)):
-    logger.info(f"Uploading file: {file.filename}")
+# =========================
+# CLOUDINARY UPLOAD
+# =========================
+@app.post("/upload-cloudinary")
+async def upload_cloudinary(file: UploadFile = File(...)):
+    logger.info(f"Uploading to Cloudinary: {file.filename}")
 
     result = cloudinary.uploader.upload(file.file)
 
@@ -54,3 +84,36 @@ async def upload(file: UploadFile = File(...)):
         "filename": file.filename,
         "url": result["secure_url"]
     }
+
+# =========================
+# AWS S3 UPLOAD (FIXED + PRO)
+# =========================
+@app.post("/upload-s3")
+async def upload_s3(file: UploadFile = File(...)):
+    logger.info(f"Uploading to S3: {file.filename}")
+
+    try:
+        # bikin nama file unik biar tidak ketimpa
+        file_key = f"uploads/{uuid.uuid4()}-{file.filename}"
+
+        # upload ke S3
+        s3_client.upload_fileobj(
+            file.file,
+            BUCKET_NAME,
+            file_key,
+            ExtraArgs={
+                "ContentType": file.content_type
+            }
+        )
+
+        # URL hasil upload
+        url = f"https://{BUCKET_NAME}.s3.{os.getenv('AWS_REGION')}.amazonaws.com/{file_key}"
+
+        return {
+            "filename": file.filename,
+            "url": url
+        }
+
+    except Exception as e:
+        logger.error(f"S3 upload failed: {str(e)}")
+        return {"error": str(e)}
