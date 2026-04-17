@@ -82,28 +82,3 @@ uvicorn main:app --reload
 ```
 
 ---
-
-## 🌐 API Preview
-
-<p align="center">
-  <img src="https://media.giphy.com/media/f3iwJFOVOwuy7K6FFw/giphy.gif" width="500"/>
-</p>
-
-- Swagger Docs: `http://127.0.0.1:8000/docs`
-- ReDoc: `http://127.0.0.1:8000/redoc`
-
----
-
-## 🎯 Goals
-
-This project is built to:
-
-- Practice real-world backend architecture
-- Prepare for backend developer roles
-- Demonstrate scalable API development skills
-
----
-
-
-
-

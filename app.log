@@ -16,3 +16,20 @@
 2026-04-13 10:59:27,246 - INFO - \U0001f680 Backend is starting...
 2026-04-13 11:05:32,158 - INFO - \U0001f6d1 Backend is shutting down...
 2026-04-13 11:05:39,054 - INFO - \U0001f680 Backend is starting...
+2026-04-13 11:13:45,043 - INFO - Uploading to S3: fando.PNG
+2026-04-13 11:13:45,164 - ERROR - S3 upload failed: Parameter validation failed:
+Invalid bucket name "AWS_BUCKET_NAME=python-ecommerce-bucket-863706938484-ap-southeast-1-an": Bucket name must match the regex "^[a-zA-Z0-9.\-_]{1,255}$" or be an ARN matching the regex "^arn:(aws).*:(s3|s3-object-lambda):[a-z\-0-9]*:[0-9]{12}:accesspoint[/:][a-zA-Z0-9\-.]{1,63}$|^arn:(aws).*:s3-outposts:[a-z\-0-9]+:[0-9]{12}:outpost[/:][a-zA-Z0-9\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\-]{1,63}$"
+2026-04-13 11:16:44,330 - INFO - Uploading to S3: fando.PNG
+2026-04-13 11:16:44,369 - ERROR - S3 upload failed: Parameter validation failed:
+Invalid bucket name "AWS_BUCKET_NAME=python-ecommerce-bucket-863706938484-ap-southeast-1-an": Bucket name must match the regex "^[a-zA-Z0-9.\-_]{1,255}$" or be an ARN matching the regex "^arn:(aws).*:(s3|s3-object-lambda):[a-z\-0-9]*:[0-9]{12}:accesspoint[/:][a-zA-Z0-9\-.]{1,63}$|^arn:(aws).*:s3-outposts:[a-z\-0-9]+:[0-9]{12}:outpost[/:][a-zA-Z0-9\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\-]{1,63}$"
+2026-04-13 11:17:50,687 - INFO - \U0001f680 Backend is starting...
+2026-04-13 11:18:10,241 - INFO - Uploading to S3: fando.PNG
+2026-04-13 11:18:11,611 - ERROR - S3 upload failed: An error occurred (AccessDenied) when calling the PutObject operation: User: arn:aws:iam::863706938484:user/python-s3-user is not authorized to perform: s3:PutObject on resource: "arn:aws:s3:::python-ecommerce-bucket-863706938484-ap-southeast-1-an/uploads/08091682-ea7e-4a61-9c82-4a7914131a4c-fando.PNG" because no identity-based policy allows the s3:PutObject action
+2026-04-13 11:27:53,439 - INFO - \U0001f680 Backend is starting...
+2026-04-13 11:28:17,085 - INFO - Uploading to S3: fando.PNG
+2026-04-13 11:35:30,169 - INFO - Uploading to S3: alyssa-strohmann-TS--uNw-JqE-unsplash.jpg
+2026-04-13 11:35:53,544 - INFO - Uploading to S3: daniel-korpai-hbTKIbuMmBI-unsplash.jpg
+2026-04-13 11:36:07,913 - INFO - Uploading to S3: 1.jpg
+2026-04-13 11:36:19,079 - INFO - Uploading to S3: c-d-x-PDX_a_82obo-unsplash.jpg
+2026-04-13 11:40:07,513 - INFO - Uploading to S3: 26.jpeg
+2026-04-13 11:40:22,392 - INFO - Uploading to S3: IMG_20220113_170255.JPG
