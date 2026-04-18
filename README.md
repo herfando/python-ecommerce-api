@@ -75,10 +75,4 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Run Server
 
-```bash
-uvicorn main:app --reload
-```
-
----
