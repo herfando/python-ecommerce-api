@@ -62,9 +62,3 @@ git clone https://github.com/your-username/python-ecommerce-api.git
 cd python-ecommerce-api
 ```
 
-### 2️⃣ Create Virtual Environment
-
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
