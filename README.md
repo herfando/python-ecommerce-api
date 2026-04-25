@@ -50,15 +50,3 @@ python-ecommerce-api/
 ├─ utils/       # helper functions
 ├─ main.py      # entry point
 ```
-
----
-
-## ⚙️ Getting Started
-
-### 1️⃣ Clone Repo
-
-```bash
-git clone https://github.com/your-username/python-ecommerce-api.git
-cd python-ecommerce-api
-```
-
